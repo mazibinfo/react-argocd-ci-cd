@@ -3,11 +3,16 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main   # fix here
+      - main
+    paths-ignore:
+      - 'k8s/**'   # Prevent loop when manifest updates
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Required to push changes back
 
     steps:
       - uses: actions/checkout@v4
@@ -24,3 +29,15 @@ jobs:
           context: ./react-app
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/react-app-argocd-demo:${{ github.sha }}
+
+      - name: Update Kubernetes Manifest Image
+        run: |
+          sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/react-app-argocd-demo:${{ github.sha }}|g" k8s/deployment.yaml
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add k8s/deployment.yaml
+          git commit -m "Update image to ${{ github.sha }} [skip ci]" || echo "No changes to commit"
+          git push
