@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - mains
+      - main   # fix here
 
 jobs:
   build:
@@ -23,4 +23,4 @@ jobs:
         with:
           context: ./react-app
           push: true
-          tags: YOUR_DOCKERHUB_USERNAME/react-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/react-app-argocd-demo:latest
