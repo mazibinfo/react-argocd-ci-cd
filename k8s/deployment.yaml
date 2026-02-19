@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: YOUR_DOCKERHUB_USERNAME/react-app:latest
+          image: mazib/react-app-argocd-demo:13676e813ea7390b7ba8af5ded18c1eca67e24b8
           ports:
             - containerPort: 80
           imagePullPolicy: Always
