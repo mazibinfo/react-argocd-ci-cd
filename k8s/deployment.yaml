@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: mazib/react-app-argocd-demo:d522c56
+          image: mazib/react-app-argocd-demo:d5d22de
           ports:
             - containerPort: 80
           imagePullPolicy: Always
