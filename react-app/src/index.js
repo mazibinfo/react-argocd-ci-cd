@@ -10,6 +10,7 @@ function App() {
 
       <p>Welcome to the World!</p>
       <p>Good BYE!</p>
+      <p>"😎", "😂", "❤️", "🔥", "🤔", "🥳", "💯", "✨", "🌸", "🐱"</p>
       <p>If you see this, your pipeline works!</p>
     </div>
   );
