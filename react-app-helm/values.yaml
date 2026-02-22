@@ -1,8 +1,8 @@
 replicaCount: 2
 
 image:
-  repository: YOUR_DOCKERHUB_USERNAME/react-app
-  tag: latest
+  repository: mazib/react-app-argocd-demo
+  tag: e9ac514
   pullPolicy: Always
 
 service:
