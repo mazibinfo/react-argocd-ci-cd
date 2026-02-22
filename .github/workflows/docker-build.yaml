@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'k8s/**'   # Prevent infinite loop
+      - 'react-app-helm/**'   # Prevent infinite loop when values.yaml changes
 
 jobs:
   build:
@@ -35,14 +35,15 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/react-app-argocd-demo:${{ steps.vars.outputs.SHORT_SHA }}
 
-      - name: Update Kubernetes Manifest Image
+      - name: Update Helm values.yaml Image
         run: |
-          sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/react-app-argocd-demo:${{ steps.vars.outputs.SHORT_SHA }}|g" k8s/deployment.yaml
+          sed -i "s|repository: .*|repository: ${{ secrets.DOCKER_USERNAME }}/react-app-argocd-demo|g" react-app-helm/values.yaml
+          sed -i "s|tag: .*|tag: ${{ steps.vars.outputs.SHORT_SHA }}|g" react-app-helm/values.yaml
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add k8s/deployment.yaml
-          git commit -m "Update image to ${{ steps.vars.outputs.SHORT_SHA }} [skip ci]" || echo "No changes to commit"
+          git add react-app-helm/values.yaml
+          git commit -m "Update Helm image to ${{ steps.vars.outputs.SHORT_SHA }} [skip ci]" || echo "No changes to commit"
           git push
