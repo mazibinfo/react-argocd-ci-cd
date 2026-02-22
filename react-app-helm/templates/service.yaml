@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "react-app.fullname" . }}-service
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     app: {{ include "react-app.name" . }}

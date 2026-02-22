@@ -1,3 +1,4 @@
+namespace: react-app
 replicaCount: 2
 
 image:
