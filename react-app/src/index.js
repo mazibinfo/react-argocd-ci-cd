@@ -5,6 +5,7 @@ function App() {
   return (
     <div style={{textAlign: "center", marginTop: "50px"}}>
       <h1>React CI/CD with ArgoCD 🚀</h1>
+      <p>STAGE ENVIRONMENT!</p>
       <p>If you see this, your pipeline works!</p>
     </div>
   );
