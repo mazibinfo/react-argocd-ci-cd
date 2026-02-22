@@ -1,0 +1,19 @@
+namespace: react-app
+replicaCount: 2
+
+image:
+  repository: mazib/react-app-argocd-demo
+  tag: e9ac514
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  host: react-stage.localhost
+  path: /
+  pathType: Prefix
