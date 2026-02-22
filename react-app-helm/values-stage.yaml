@@ -3,7 +3,7 @@ replicaCount: 2
 
 image:
   repository: mazib/react-app-argocd-demo
-  tag: b403c64
+  tag: 5d37b72
   pullPolicy: Always
 
 service:
