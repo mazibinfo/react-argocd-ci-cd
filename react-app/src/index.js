@@ -8,7 +8,7 @@ function App() {
       <p>STAGE ENVIRONMENT!</p>
       <p>We are implementing argoCD application!</p>
 
-
+      <p>Welcome to the World!</p>
       <p>Good BYE!</p>
       <p>If you see this, your pipeline works!</p>
     </div>
