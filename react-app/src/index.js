@@ -7,6 +7,9 @@ function App() {
       <h1>React CI/CD with ArgoCD 🚀</h1>
       <p>STAGE ENVIRONMENT!</p>
       <p>We are implementing argoCD application!</p>
+
+
+      <p>Good BYE!</p>
       <p>If you see this, your pipeline works!</p>
     </div>
   );

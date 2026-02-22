@@ -21,7 +21,10 @@ spec:
 
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: true        # removes resources no longer in Git
+      selfHeal: true     # corrects drift automatically
+      allowEmpty: false  # prevents accidental deletion if chart is empty
     syncOptions:
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true # ensures only out-of-sync changes trigger updates
+      - Validate=false           # optional: disables strict CRD validation for faster deploy
