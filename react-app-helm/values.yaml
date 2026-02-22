@@ -14,6 +14,6 @@ service:
 ingress:
   enabled: true
   ingressClassName: nginx
-  host: react.local
+  host: react.localhost
   path: /
   pathType: Prefix
